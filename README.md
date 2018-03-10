@@ -130,8 +130,8 @@ julia> HackerNews.getuser("pg").karma
 * Getting updates!
 Updates can be related to profiles as well as posts,
 
-** for User updates, set `user_related=true` while instantiating the `HN` type object
-** for Item updates, `HN` follows default settings which is `user_related=false`
+* * for User updates, set `user_related=true` while instantiating the `HN` type object
+* * for Item updates, `HN` follows default settings which is `user_related=false`
 
 ```julia
 julia> userupdates = HackerNews.HN("updates", 2, true)
