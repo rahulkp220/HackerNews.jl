@@ -16,9 +16,9 @@ julia> Pkg.clone("https://github.com/rahulkp220/HackerNews.jl")
 julia> Pkg.update("HackerNews")
 ```
 
-# How it works?
+## How it works?
 
-* Getting `maxitem`    
+#### Getting `maxitem`    
 ```julia
 julia> using HackerNews
 
@@ -32,7 +32,7 @@ INFO: generating post data...
  HackerNews.HNPost(Dict{String,Any}(Pair{String,Any}("by", "BrandoElFollito"),Pair{String,Any}("time", 1520711666),Pair{String,Any}("id", 16559872),Pair{String,Any}("parent", 16558997),Pair{String,Any}("text", "Thanks for the reference. For a 10-11 yo (if I read &quot;5th grade&quot; correctly) this is actually a surprisingly abstract reaction (all the tragedy aside)"),Pair{String,Any}("type", "comment")), 16559872, nothing, "comment", "BrandoElFollito", 1520711666, "Thanks for the reference. For a 10-11 yo (if I read &quot;5th grade&quot; correctly) this is actually a surprisingly abstract reaction (all the tragedy aside)", nothing, 16558997, nothing, nothing, nothing, nothing, nothing, nothing, nothing)
  ```
 
-* Getting `topstories`, `newstories`, `beststories`, `askstories`, `showstories` and `jobstories`
+#### Getting `topstories`, `newstories`, `beststories`, `askstories`, `showstories` and `jobstories`
 ```julia
 
 # just set the story to any one of the above items and it works!
@@ -92,7 +92,7 @@ Dict{String,Any} with 9 entries:
                                                         
 ```
 
-* Getting User information
+#### Getting `user` information
 
 ```julia
 julia> HackerNews.getuser("pg")
@@ -126,11 +126,11 @@ julia> HackerNews.getuser("pg").karma
 155111
 ```
 
-* Getting updates!
+#### Getting `updates`!
 Updates can be related to profiles as well as posts,
 
-* * for User updates, set `user_related=true` while instantiating the `HN` type object
-* * for Item updates, `HN` follows default settings which is `user_related=false`
+* for User updates, set `user_related=true` while instantiating the `HN` type object
+* for Item updates, `HN` follows default settings which is `user_related=false`
 
 ```julia
 julia> userupdates = HackerNews.HN("updates", 2, true)
