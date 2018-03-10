@@ -1,4 +1,5 @@
 # HackerNews
+The unofficial Julia API for Hackernews
 
 [![Build Status](https://travis-ci.org/rahulkp220/HackerNews.jl.svg?branch=master)](https://travis-ci.org/rahulkp220/HackerNews.jl)
 
