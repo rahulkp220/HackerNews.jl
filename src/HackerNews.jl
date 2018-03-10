@@ -39,20 +39,20 @@ type HNPost
 
     # Inner constructor
     HNPost(data,
-            id=get(data,"id",nothing), 
-            deleted=get(data,"deleted",nothing), 
-            itemtype=get(data, "type", nothing), 
-            by=get(data,"by",nothing), 
-            time=get(data,"time",nothing),
-            text=get(data,"text",nothing),
-            dead=get(data,"dead",nothing), 
-            parent=get(data,"parent",nothing), 
-            poll=get(data,"poll",nothing), 
-            kids=get(data, "kids",nothing), 
-            url=get(data,"url",nothing),
-            score=get(data,"score",nothing),
-            title=get(data,"title",nothing),
-            parts=get(data,"parts",nothing), 
+            id      =   get(data,"id",nothing), 
+            deleted =   get(data,"deleted",nothing), 
+            itemtype=   get(data, "type", nothing), 
+            by      =   get(data,"by",nothing), 
+            time    =   get(data,"time",nothing),
+            text    =   get(data,"text",nothing),
+            dead    =   get(data,"dead",nothing), 
+            parent  =   get(data,"parent",nothing), 
+            poll    =   get(data,"poll",nothing), 
+            kids    =   get(data, "kids",nothing), 
+            url     =   get(data,"url",nothing),
+            score   =   get(data,"score",nothing),
+            title   =   get(data,"title",nothing),
+            parts   =   get(data,"parts",nothing), 
             descendants=get(data,"descendants",nothing)) = new(data,id, deleted, itemtype, by, time,text, dead, 
                                                             parent, poll, kids, url, score, title, parts, descendants)
 end
@@ -71,12 +71,12 @@ type HNUser
 
     # Inner constructor
     HNUser(data, 
-            id=get(data, "id", nothing), 
-            delay=get(data, "delay", nothing),
-            created=get(data, "created", nothing),
-            karma=get(data, "karma", nothing),
-            about=get(data, "about", nothing), 
-            submitted=get(data, "submitted", nothing)) = new(data, id, delay, created, karma, about, submitted)
+            id      =   get(data, "id", nothing), 
+            delay   =   get(data, "delay", nothing),
+            created =   get(data, "created", nothing),
+            karma   =   get(data, "karma", nothing),
+            about   =   get(data, "about", nothing), 
+            submitted=  get(data, "submitted", nothing)) = new(data, id, delay, created, karma, about, submitted)
 end
 
 
