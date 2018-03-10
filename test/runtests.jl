@@ -17,7 +17,7 @@ hnusers = HackerNews.HN("updates", 5, true)
 @test hnusers.nposts == 5
 
 # testing getinfo for user
-users = HackerNews.getinfo(hnusers)
+users = HackerNews.getinfo(HackerNews.HN("updates", 5, true))
 @test length(users) == 5
 @test typeof(users[1].data) == Dict{String,Any}
 
