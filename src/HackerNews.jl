@@ -44,12 +44,12 @@ type HNPost
 end
 
 """
-function to get the ids for a story, default count being 10.
+function to get the ids for a story
 """
 function getids(hn::HNInit)
     response = HTTP.request("GET","https://hacker-news.firebaseio.com/v0/" * hn.story * ".json?print=pretty")
     data = eval(parse(convert(String, response.body)))
-    return data
+    return data[1:hn.nposts]
 end
 
 
