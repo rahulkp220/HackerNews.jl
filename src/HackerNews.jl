@@ -56,7 +56,8 @@ end
 """
 function to get the actual posts for given array of IDs
 """
-function getposts(hn::HNInit, ids::Array{Int64, 1})
+function getposts(hn::HNInit)
+    ids = HackerNews.getids(hn)
     posts = HNPost[]
 
     for i in 1:hn.nposts
