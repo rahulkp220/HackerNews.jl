@@ -10,6 +10,10 @@ HackerNews initializer composite type
 type HNInit
     story::String
     nposts::Int64
+    user_related::Bool
+
+    # Inner constructor
+    HNInit(story, nposts=1, user_related=false) = new(story, nposts, user_related)
 end
 
 """
@@ -48,8 +52,14 @@ function to get the ids for a story
 """
 function getids(hn::HNInit)
     response = HTTP.request("GET","https://hacker-news.firebaseio.com/v0/" * hn.story * ".json?print=pretty")
-    data = eval(parse(convert(String, response.body)))
-    return data[1:hn.nposts]
+    
+    if hn.story == "updates"
+        JSON.parse(convert(String, response.body))[hn.user_related ? "profiles":"items"]  
+    elseif hn.story == "maxitem"
+        parse(convert(String, response.body))    
+    else 
+        eval(parse(convert(String, response.body)))[1:hn.nposts]    
+    end
 end
 
 
@@ -67,7 +77,7 @@ function getposts(hn::HNInit)
         push!(posts, hnpost)
     end
 
-    return posts
+    posts
 end
 
 # Module exports
