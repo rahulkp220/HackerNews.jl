@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/rahulkp220/HackerNews.jl.svg?branch=master)](https://travis-ci.org/rahulkp220/HackerNews.jl)
 [![codecov.io](http://codecov.io/github/rahulkp220/HackerNews.jl/coverage.svg?branch=master)](http://codecov.io/github/rahulkp220/HackerNews.jl?branch=master)
 
-# HackerNews
+# HackerNews.jl
 The unofficial Julia API for Hackernews.
 
 See [Hacker News API](https://github.com/HackerNews/API)
@@ -38,7 +38,7 @@ INFO: generating post data...
 # just set the story to any one of the above items and it works!
 julia> story = "topstories"
 
-# create a HN object
+# create a HN object with the number of posts you want to fetch
 julia>topstories = HackerNews.HN(story, 2)
 HackerNews.HN("topstories", 2, false)
 
