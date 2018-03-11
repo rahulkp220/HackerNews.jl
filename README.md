@@ -158,5 +158,5 @@ INFO: generating post data...
 
 ## Facing issues? :scream:
 * Open a PR with the detailed expaination of the issue
-* Reach me out [here](https://www.rahullakhanpal.in")
+* Reach me out [here](https://www.rahullakhanpal.in)
 
