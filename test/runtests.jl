@@ -14,7 +14,7 @@ result_maxitem = HackerNews.getinfo(maxitem)
 jobstories = HackerNews.HN(HackerNews.JobStories,2)
 result_jobstories = HackerNews.getinfo(jobstories)
 
-@ hn_route_string(jobstories.story) == "jobstories"
+@test hn_route_string(jobstories.story) == "jobstories"
 @test jobstories.nposts == 2
 @test typeof(result_jobstories[1].data) == Dict{String,Any}
 
