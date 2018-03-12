@@ -27,7 +27,7 @@ result_user_updates = HackerNews.getinfo(user_updates)
 
 @test hn_route_string(user_updates.story) == "updates"
 @test user_updates.nposts == 1
-typeof(result_user_updates) == Array{HackerNews.HNUser,1}
+@test typeof(result_user_updates) == Array{HackerNews.HNUser,1}
 @test typeof(result_user_updates[1].data) == Dict{String,Any}
 
 ## post/item updates
@@ -44,9 +44,6 @@ result_post_updates = HackerNews.getinfo(post_updates)
 user = HackerNews.getuser("pg")
 
 @test typeof(user) == HackerNews.HNUser
-@test :karma in fieldnames(user) == true
-@test :created in fieldnames(user) == true
-@test :id in fieldnames(user) == true
 @test typeof(user.data) == Dict{String,Any}
 @test user.id == "pg"
 
