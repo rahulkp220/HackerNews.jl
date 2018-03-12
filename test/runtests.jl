@@ -1,25 +1,55 @@
 using HackerNews
 using Base.Test
 
-# testing HN for items
-hnitems = HackerNews.HN(HackerNews.JobStories, 5)
-@test hn_route_string(hnitems.story) == "jobstories"
-@test hnitems.nposts == 5
+# testing maxitems
+maxitem = HackerNews.HN(HackerNews.MaxItem)
+result_maxitem = HackerNews.getinfo(maxitem)
 
-# testing getinfo for items
-posts = HackerNews.getinfo(hnitems)
-@test length(posts) == 5
-@test typeof(posts[1].data) == Dict{String,Any}
+@test hn_route_string(maxitem.story) == "maxitem"
+@test maxitem.nposts == 1
+@test typeof(result_maxitem[1].data) == Dict{String,Any}
 
-# testing HN for users
-hnusers = HackerNews.HN(HackerNews.Updates, true)
-@test hn_route_string(hnusers.story) == "updates"
-@test hnusers.nposts == 1
 
-# testing getinfo for user
-users = HackerNews.getinfo(HackerNews.HN(HackerNews.Updates, true))
-@test length(users) == 1
-@test typeof(users[1].data) == Dict{String,Any}
+# testing jobstories
+jobstories = HackerNews.HN(HackerNews.JobStories,2)
+result_jobstories = HackerNews.getinfo(jobstories)
 
-# testing getuser
-@test HackerNews.getuser("djsumdog").id == "djsumdog"
+@ hn_route_string(jobstories.story) == "jobstories"
+@test jobstories.nposts == 2
+@test typeof(result_jobstories[1].data) == Dict{String,Any}
+
+
+# testing updates
+
+## user updates
+user_updates = HackerNews.HN(HackerNews.Updates, 1, true)
+result_user_updates = HackerNews.getinfo(user_updates)
+
+@test hn_route_string(user_updates.story) == "updates"
+@test user_updates.nposts == 1
+typeof(result_user_updates) == Array{HackerNews.HNUser,1}
+@test typeof(result_user_updates[1].data) == Dict{String,Any}
+
+## post/item updates
+post_updates = HackerNews.HN(HackerNews.Updates, 1, false)
+result_post_updates = HackerNews.getinfo(post_updates)
+
+@test hn_route_string(post_updates.story) == "updates"
+@test post_updates.nposts == 1
+@test typeof(result_post_updates) == Array{HackerNews.HNPost,1}
+@test typeof(result_post_updates[1].data) == Dict{String,Any}
+
+
+# testing user information
+user = HackerNews.getuser("pg")
+
+@test typeof(user) == HackerNews.HNUser
+@test :karma in fieldnames(user) == true
+@test :created in fieldnames(user) == true
+@test :id in fieldnames(user) == true
+@test typeof(user.data) == Dict{String,Any}
+@test user.id == "pg"
+
+
+
+
