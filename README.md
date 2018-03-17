@@ -1,5 +1,11 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/rahulkp220/HackerNews.jl.svg?branch=master)](https://travis-ci.org/rahulkp220/HackerNews.jl)
 [![codecov.io](http://codecov.io/github/rahulkp220/HackerNews.jl/coverage.svg?branch=master)](http://codecov.io/github/rahulkp220/HackerNews.jl?branch=master)
+[![GitHub contributors](https://img.shields.io/github/contributors/rahulkp220/HackerNews.jl.svg)](https://github.com/rahulkp220/HackerNews.jl/graphs/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/rahulkp220/HackerNews.jl.svg)](https://github.com/rahulkp220/HackerNews.jl/issues/)
+[![GitHub version](https://badge.fury.io/gh/rahulkp220%2FHackerNews.jl.svg)](https://github.com/rahulkp220/HackerNews.jl)
+
+[![ForTheBadge built-by-developers](http://ForTheBadge.com/images/badges/built-by-developers.svg)](https://GitHub.com/rahulkp220/)
 
 # HackerNews.jl
 The unofficial Julia API for Hackernews.
