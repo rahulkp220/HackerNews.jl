@@ -13,8 +13,9 @@ The unofficial Julia API for Hackernews.
 See [Hacker News API](https://github.com/HackerNews/API)
 
 ## Installation
+Since HackerNews is registered in `METADATA.jl`, you can directly install it like,
 ```julia
-julia> Pkg.clone("https://github.com/rahulkp220/HackerNews.jl")
+julia> Pkg.add("HackerNews")
 ```
 
 ## Update
