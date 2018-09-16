@@ -13,7 +13,7 @@ The unofficial Julia API for Hackernews :fire:
 
 See [Hacker News API](https://github.com/HackerNews/API)
 
-### Installation
+## Installation
 
 Since HackerNews is registered in official [Julia Registry](https://github.com/JuliaRegistries/General/tree/master/H/HackerNews), you can directly install it.
 
@@ -22,11 +22,11 @@ julia> ]
 (v1.0) pkg> add HackerNews
 ```
 
-### How it works?
+## How it works?
 
 The API is fairly simple to use and there isn't much required to get up and running.
 
-#### Getting all the routes available to be used
+### Getting all the routes available to be used
 
 The package provides a `HackerNews.HNApiRoute` which represents all the routes that the Hackernews API can handle. You can get a list of all available routes by typing,
 ```julia
@@ -42,7 +42,7 @@ julia> subtypes(HackerNews.HNApiRoute)
  HackerNews.Updates 
 ```
 
-#### Getting `maxitem`
+### Getting `maxitem`
 
 ```julia
 julia> using HackerNews
@@ -57,7 +57,7 @@ INFO: generating post data...
 
 ```
 
-#### Getting `topstories`, `newstories`, `beststories`, `askstories`, `showstories` and `jobstories`
+### Getting `topstories`, `newstories`, `beststories`, `askstories`, `showstories` and `jobstories`
 
 ```julia
 
@@ -74,26 +74,6 @@ INFO: generating post data...
 # getting the type of result 
 julia> typeof(result)
 Array{HackerNews.HNPost,1}
-
-# get all the fieldnames available
-julia> fieldnames(result[1])
-16-element Array{Symbol,1}:
- :data       
- :id         
- :deleted    
- :itemtype   
- :by         
- :time       
- :text       
- :dead       
- :parent     
- :poll       
- :kids       
- :url        
- :score      
- :title      
- :parts      
- :descendants
 
 # data field respresnt the raw Hackernews API response
 julia> result[1].data
@@ -118,7 +98,7 @@ julia> result[1].title
 "Intel Fights for Its Future"
 ```
 
-#### Getting `updates`
+### Getting `updates`
 Updates can be related to profiles as well as posts,
 
 * for User updates, set `user_related=true` while instantiating the `HN` type object
@@ -148,7 +128,7 @@ INFO: generating user data...
  HackerNews.HNUser(Dict{String,Any}(Pair{String,Any}("submitted", Any[...])
 ```
 
-#### Getting `user` information
+### Getting `user` information
 
 ```julia
 julia> HackerNews.getuser("pg")
@@ -163,17 +143,6 @@ Dict{String,Any} with 5 entries:
   "id"        => "pg"
   "created"   => 1160418092
 
-# or alternatively explore using all the fields
-julia> fieldnames(HackerNews.getuser("pg"))
-7-element Array{Symbol,1}:
- :data     
- :id       
- :delay    
- :created  
- :karma    
- :about    
- :submitted
-
 # Again, awesome!
 julia> HackerNews.getuser("pg").id
 "pg"
@@ -182,7 +151,7 @@ julia> HackerNews.getuser("pg").karma
 155111
 ```
 
-### Facing issues? :scream:
+## Facing issues? :scream:
 
 * Open a PR with the detailed expaination of the issue.
 * Reach me out [here](https://www.rahullakhanpal.in)
