@@ -4,13 +4,12 @@ os:
   - linux
   - osx
 julia:
-  - 0.6
+  - 0.7
+  - 1.0
 notifications:
   email: false
 git:
   depth: 99999999
 
-script:
-  - julia -e 'Pkg.clone(pwd()); Pkg.build("HackerNews"); Pkg.test("HackerNews"; coverage=true)'
 after_success:
   - julia -e 'cd(Pkg.dir("HackerNews")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
