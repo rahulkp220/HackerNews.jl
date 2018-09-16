@@ -8,25 +8,26 @@
 [![ForTheBadge built-by-developers](http://ForTheBadge.com/images/badges/built-by-developers.svg)](https://GitHub.com/rahulkp220/)
 
 # HackerNews.jl
-The unofficial Julia API for Hackernews.
+
+The unofficial Julia API for Hackernews :fire:
 
 See [Hacker News API](https://github.com/HackerNews/API)
 
-## Installation
-Since HackerNews is registered in `METADATA.jl`, you can directly install it like,
+### Installation
+
+Since HackerNews is registered in official [Julia Registry](https://github.com/JuliaRegistries/General/tree/master/H/HackerNews), you can directly install it.
+
 ```julia
-julia> Pkg.add("HackerNews")
+julia> ]
+(v1.0) pkg> add HackerNews
 ```
 
-## Update
-```julia
-julia> Pkg.update("HackerNews")
-```
+### How it works?
 
-## How it works?
 The API is fairly simple to use and there isn't much required to get up and running.
 
-### Getting all the routes available to be used
+#### Getting all the routes available to be used
+
 The package provides a `HackerNews.HNApiRoute` which represents all the routes that the Hackernews API can handle. You can get a list of all available routes by typing,
 ```julia
 julia> subtypes(HackerNews.HNApiRoute)
@@ -41,7 +42,8 @@ julia> subtypes(HackerNews.HNApiRoute)
  HackerNews.Updates 
 ```
 
-### Getting `maxitem`    
+#### Getting `maxitem`
+
 ```julia
 julia> using HackerNews
 
@@ -55,7 +57,8 @@ INFO: generating post data...
 
 ```
 
-### Getting `topstories`, `newstories`, `beststories`, `askstories`, `showstories` and `jobstories`
+#### Getting `topstories`, `newstories`, `beststories`, `askstories`, `showstories` and `jobstories`
+
 ```julia
 
 julia> topstories = HackerNews.HN(HackerNews.TopStories, 2)
@@ -65,8 +68,8 @@ julia> result = HackerNews.getinfo(topstories)
 INFO: fetching HackerNews.TopStories...
 INFO: generating post data...
 2-element Array{HackerNews.HNPost,1}:
- HackerNews.HNPost(Dict{String,Any}(Pair{String,Any}("by", ....)                             
- HackerNews.HNPost(Dict{String,Any}(Pair{String,Any}("by", ...)   
+ HackerNews.HNPost(Dict{String,Any}(Pair{String,Any}("by", ....)
+ HackerNews.HNPost(Dict{String,Any}(Pair{String,Any}("by", ...)
 
 # getting the type of result 
 julia> typeof(result)
@@ -113,10 +116,9 @@ julia> result[1].by
 
 julia> result[1].title
 "Intel Fights for Its Future"
-                                     
 ```
 
-### Getting `updates`
+#### Getting `updates`
 Updates can be related to profiles as well as posts,
 
 * for User updates, set `user_related=true` while instantiating the `HN` type object
@@ -143,10 +145,10 @@ julia> HackerNews.getinfo(user_updates)
 INFO: fetching updates..
 INFO: generating user data...
 1-element Array{HackerNews.HNUser,1}:
- HackerNews.HNUser(Dict{String,Any}(Pair{String,Any}("submitted", Any[...])            
+ HackerNews.HNUser(Dict{String,Any}(Pair{String,Any}("submitted", Any[...])
 ```
 
-### Getting `user` information
+#### Getting `user` information
 
 ```julia
 julia> HackerNews.getuser("pg")
@@ -159,7 +161,7 @@ Dict{String,Any} with 5 entries:
   "karma"     => 155111
   "about"     => "Bug fixer."
   "id"        => "pg"
-  "created"   => 1160418092 
+  "created"   => 1160418092
 
 # or alternatively explore using all the fields
 julia> fieldnames(HackerNews.getuser("pg"))
@@ -180,9 +182,8 @@ julia> HackerNews.getuser("pg").karma
 155111
 ```
 
+### Facing issues? :scream:
 
-
-## Facing issues? :scream:
-* Open a PR with the detailed expaination of the issue
+* Open a PR with the detailed expaination of the issue.
 * Reach me out [here](https://www.rahullakhanpal.in)
 
