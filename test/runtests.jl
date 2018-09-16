@@ -1,5 +1,5 @@
-using HackerNews
-using Base.Test
+using HackerNews, Compat
+using Compat.Test
 
 # testing maxitems
 maxitem = HackerNews.HN(HackerNews.MaxItem)

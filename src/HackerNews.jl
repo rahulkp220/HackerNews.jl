@@ -8,14 +8,14 @@ using JSON
 abstract type HNApiRoute end 
 
 # HNApiRoute Subtypes
-type MaxItem <: HNApiRoute end
-type TopStories <: HNApiRoute end 
-type NewStories <: HNApiRoute end 
-type BestStories <: HNApiRoute end 
-type AskStories <: HNApiRoute end 
-type ShowStories <: HNApiRoute end 
-type JobStories <: HNApiRoute end 
-type Updates <: HNApiRoute end
+struct MaxItem <: HNApiRoute end
+struct TopStories <: HNApiRoute end 
+struct NewStories <: HNApiRoute end 
+struct BestStories <: HNApiRoute end 
+struct AskStories <: HNApiRoute end 
+struct ShowStories <: HNApiRoute end 
+struct JobStories <: HNApiRoute end 
+struct Updates <: HNApiRoute end
 
 # Declaring the values
 hn_route_string(::Type{MaxItem}) = "maxitem"
@@ -30,7 +30,7 @@ hn_route_string(::Type{Updates}) = "updates"
 """
 HackerNews initializer composite type
 """
-type HN
+struct HN
     story
     nposts::Int64
     user_related::Bool
@@ -43,7 +43,7 @@ end
 """
 HackerNews post composite type
 """ 
-type HNPost
+struct HNPost
     data
     id
     deleted
@@ -84,7 +84,7 @@ end
 """
 Hackernews user composite type
 """
-type HNUser
+struct HNUser
     data
     id
     delay
@@ -107,24 +107,24 @@ end
 Parse response for updates
 """
 function parse_hn_response(::Type{Updates}, response, hn)
-    info("fetching updates..")
-    JSON.parse(convert(String, response.body))[hn.user_related ? "profiles":"items"]  
+    @info("fetching updates..")
+    JSON.parse(String(response.body))[hn.user_related ? "profiles" : "items"]  
 end
 
 """
 Parse response for maxitem
 """
 function parse_hn_response(::Type{MaxItem}, response, hn)
-    info("fetching maxitem..")
-    parse(convert(String, response.body))    
+    @info("fetching maxitem..")
+    JSON.parse(String(response.body))    
 end
 
 """
 Parse response
 """
 function parse_hn_response(story, response, hn) 
-    info("fetching $(story)...")
-    eval(parse(convert(String, response.body)))[1:hn.nposts]    
+    @info("fetching $(story)...")
+    eval(JSON.parse(String(response.body)))[1:hn.nposts]    
 end
 
 """
@@ -145,18 +145,18 @@ function getinfo(hn::HN)
     users = HNUser[]
 
     if hn.user_related == false
-        info("generating post data...")
+        @info("generating post data...")
         for i in 1:hn.nposts
             response = HTTP.request("GET","https://hacker-news.firebaseio.com/v0/item/" * string(ids[i]) * ".json?print=pretty")
-            response_json = JSON.parse(convert(String, response.body))
+            response_json = JSON.parse(String(response.body))
             hnpost = HNPost(response_json)
             push!(posts, hnpost)
         end
     else
         for i in 1:hn.nposts
-            info("generating user data...")
+            @info("generating user data...")
             response = HTTP.request("GET","https://hacker-news.firebaseio.com/v0/user/" * string(ids[i]) * ".json?print=pretty")
-            response_json = JSON.parse(convert(String, response.body))
+            response_json = JSON.parse(String(response.body))
             hnuser = HNUser(response_json)
             push!(users, hnuser)
         end
@@ -171,7 +171,7 @@ function to get a single user info
 """
 function getuser(id::String)
     response = HTTP.request("GET","https://hacker-news.firebaseio.com/v0/user/" * id * ".json?print=pretty")    
-    response_json = JSON.parse(convert(String, response.body))
+    response_json = JSON.parse(String(response.body))
     HNUser(response_json)
 end
 
